@@ -8,7 +8,25 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: space-between;
     padding: 0.5rem calc((100vw-1000px) / 2);
-    z-index: 100000000000;
+    
+`
+
+export const HomeIcon = styled(Link)`
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    cursor: pointer;
+    font-family: Arial;
+    @media screen and (max-width: 768px) {
+        // display: none;
+    }
+
+    &.active {
+        color: #15cdfd;
+    }
 `
 
 export const NavLink = styled(Link)`
@@ -21,7 +39,7 @@ export const NavLink = styled(Link)`
     cursor: pointer;
     font-family: Arial;
     @media screen and (max-width: 768px) {
-        display: none;
+        padding-bottom: 3vh;
     }
 
     &.active {
@@ -43,12 +61,24 @@ export const Bars = styled(FaBars)`
         cursor: pointer;
     }
 `
-
+export const MobileNavMenu = styled.div`
+    display: none;
+    @media screen and (max-width: 768px) {
+        background: #090221;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        right: 0;
+        opacity: 1;
+    }
+`
 
 export const NavMenu = styled.div`
     display:flex;
     align-items: center;
     margin-right: -24px;
+    transform: translateX(-5vw)
+    z-index: 20;
 
     @media screen and (max-width: 768px) {
         display: none;

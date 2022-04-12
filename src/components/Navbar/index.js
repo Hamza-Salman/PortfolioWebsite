@@ -1,21 +1,25 @@
 import React from 'react'
-import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from './NavBarElement';
+import {Nav, NavMenu, NavBtn, NavBtnLink, MobileNavMenu, HomeIcon} from './NavBarElement';
+import MobileNavigation from './mobileNavigation';
+import Navigation from './Navigation';
 
 const Navbar = () => {
   return (
     <>
         <Nav>
-            <NavLink to="/" style={{fontSize:'50px'}}>HS</NavLink>
-            <Bars />
+            <HomeIcon to="/" style={{fontSize:'50px'}}>HS</HomeIcon>
             <NavMenu>
-                <NavLink to="/About" activeStyle>About</NavLink>
-                <NavLink to="/Projects" activeStyle>Projects</NavLink>
-                <NavLink to="/Resume" activeStyle>Resume</NavLink>
+              <Navigation />
             </NavMenu>
             <NavBtn>
                 <NavBtnLink to="/">Home</NavBtnLink>
             </NavBtn>
         </Nav>
+        <nav style={{zIndex:'49'}}>
+          <MobileNavMenu>
+            <MobileNavigation />
+          </MobileNavMenu>
+        </nav>
     </>
   );
 };

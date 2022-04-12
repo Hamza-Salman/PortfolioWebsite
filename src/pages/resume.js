@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import resumePDF from '../assets/HamzaSalman-Resume.pdf'
 import Button from 'react-bootstrap/Button'
 import { Document, Page, pdfjs } from 'react-pdf';
@@ -7,7 +7,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const Resume = () => {
     const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
 
     function onDocumentLoadSuccess({ numPages }) {
         setNumPages(numPages);
@@ -18,12 +17,25 @@ const Resume = () => {
         <Button variant="warning" href={resumePDF} size="lg" target='_blank'>
             Download CV
         </Button>
-        <Document file="temp" onLoadSuccess={onDocumentLoadSuccess}>
-            <Page pageNumber={pageNumber} />
-        </Document>
-        <p>
-            Page {pageNumber} of {numPages}
-        </p>
+        <div class='pages'>
+            <Document file="https://raw.githubusercontent.com/Hamza-Salman/PortfolioWebsite/df5af198a0812327d9889c5986cc1c9c72711149/src/assets/HamzaSalman-Resume.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+                <Page pageNumber={1} scale={window.innerWidth > 786 ? 1.7 : 0.6}/>
+            </Document>
+            <p>
+                Page {1} of {numPages}
+            </p>
+        </div>
+        <div class='pages'>
+            <Document file="https://raw.githubusercontent.com/Hamza-Salman/PortfolioWebsite/df5af198a0812327d9889c5986cc1c9c72711149/src/assets/HamzaSalman-Resume.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+                <Page pageNumber={2} scale={window.innerWidth > 786 ? 1.7 : 0.6}/>
+            </Document>
+            <p>
+                Page {2} of {numPages}
+            </p>
+        </div>
+        <Button variant="warning" href={resumePDF} size="lg" target='_blank'>
+            Download CV
+        </Button>
     </div>
   )
 }
